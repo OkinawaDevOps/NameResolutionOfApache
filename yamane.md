@@ -54,3 +54,11 @@ srclib に apr および apr-utils を展開した状態で再度 gtags -v を�
     {
 
 この中を確認していくと良いようですが、APR_DECLARE とかなマクロの確認もした方が良いのかどうか。
+
+## apr_sockaddr_info_get 手続き掘削
+
+この手続きは find_address なる手続きの戻りを戻しているだけな模様 (ざっくり)。
+
+    return find_addresses(sa, hostname, family, port, flags, 
+
+この手続きは HAVE_GETADDRINFO というマクロが定義されているかどうかで定義が変わる形になっているようです。
