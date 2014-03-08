@@ -11,3 +11,6 @@
 ## ソースコード読みの準備など
 - 14:40 ~
 - 私がソースコード追っかけるのになれていないので、とりあえずソースコード追う準備を実施。その間yamaneさんはガリガリ掘削
+- gtagsのインストール
+    - 参考URL http://d.hatena.ne.jp/m1200056/20121124/1353778084
+    - インストール履歴 https://github.com/OkinawaDevOps/NameResolutionOfApache/blob/master/gtags_install(CentOS).md
