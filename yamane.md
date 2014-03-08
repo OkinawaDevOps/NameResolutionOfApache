@@ -17,3 +17,29 @@ srclib 配下に apr および apr-util を取得して展開し、リトライ�
 
 これで configure が通った。
 
+## アタリを付けた方法
+
+以下で grep してみた。
+
+    $ find server |xargs grep resolver 2>/dev/null
+
+server/vhost.c あたりに check resolver configuration なる文字列あり。
+
+    if (strcmp(host, "*") == 0 || strcasecmp(host, "_default_") == 0) {
+        rv = apr_sockaddr_info_get(&my_addr, NULL, APR_UNSPEC, port, 0, p);
+        if (rv) {
+            return "Could not determine a wildcard address ('0.0.0.0') -- "
+                "check resolver configuration.";
+        }
+    }
+    else {
+        rv = apr_sockaddr_info_get(&my_addr, host, APR_UNSPEC, port, 0, p);
+        if (rv != APR_SUCCESS) {
+            ap_log_error(APLOG_MARK, APLOG_ERR, rv, NULL, APLOGNO(00547)
+                "Could not resolve host name %s -- ignoring!", host);
+            return NULL;
+        }
+    }
+
+apr_sockaddr_info_get がアヤシいと判断。しかし server ディレクトリの中には見当らず。
+
