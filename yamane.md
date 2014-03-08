@@ -62,3 +62,41 @@ srclib に apr および apr-utils を展開した状態で再度 gtags -v を�
     return find_addresses(sa, hostname, family, port, flags, 
 
 この手続きは HAVE_GETADDRINFO というマクロが定義されているかどうかで定義が変わる形になっているようです。
+
+## マクロ確認など
+
+apache apr_declare でググッたら以下なドキュメントが出てきた。
+
+- [libapr (aprche portable runtime) programming tutorial](http://dev.ariel-networks.com/apr/apr-tutorial/html/apr-tutorial.html)
+- [APR_DECLARE](http://apr.apache.org/docs/apr/1.4/group__apr__platform.html#gad7b91b811a172bfa802603c2fb688f98)
+
+以下な記述方法とのこと。
+
+    APR_DECLARE(rettype) apr_func(args)
+
+テーマになってるソレだと以下な記述。
+
+    APR_DECLARE(apr_status_t) apr_sockaddr_info_get(apr_sockaddr_t **sa,
+                                                    const char *hostname, 
+                                                    apr_int32_t family, apr_port_t port,
+                                                    apr_int32_t flags, apr_pool_t *p)
+
+apr_status_t 型を戻す、ということなのか。また、確認してみたところ、このマクロが #define されているのは srclib/apr/include/apr.h な模様。
+
+defined(DOXYGEN) || !defined(WIN32) の場合以下
+
+    #define APR_DECLARE(type)            type 
+
+defined(APR_DECLARE_STATIC) の場合
+
+    #define APR_DECLARE(type)            type __stdcall
+
+defined(APR_DECLARE_EXPORT) の場合
+
+    #define APR_DECLARE(type)            __declspec(dllexport) type __stdcall
+
+上記以外の場合
+
+    #define APR_DECLARE(type)            __declspec(dllimport) type __stdcall
+
+これ、windouz 向けな記述のマクロなのかどうか。
