@@ -43,3 +43,14 @@ server/vhost.c あたりに check resolver configuration なる文字列あり�
 
 apr_sockaddr_info_get がアヤシいと判断。しかし server ディレクトリの中には見当らず。
 
+## 再度確認
+
+srclib に apr および apr-utils を展開した状態で再度 gtags -v を実行 (GTAGS あたりのファイルは一度削除) して上記ソースを開いて M-S したら srclib/apr/network_io/unix/sockaddr.c で定義が確認できました。
+
+    APR_DECLARE(apr_status_t) apr_sockaddr_info_get(apr_sockaddr_t **sa,
+                                                    const char *hostname, 
+                                                    apr_int32_t family, apr_port_t port,
+                                                    apr_int32_t flags, apr_pool_t *p)
+    {
+
+この中を確認していくと良いようですが、APR_DECLARE とかなマクロの確認もした方が良いのかどうか。
