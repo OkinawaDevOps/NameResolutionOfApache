@@ -84,6 +84,7 @@ vi httpd
 cp -fp /usr/local/src/aem-middle/profile.apache.sh /etc/profile.d/apache.sh
 
 vi /etc/profile.d/apache.sh
+※下記の内容を記述
 
 
 if ! echo ${PATH} | /bin/grep -q /usr/local/apache2/bin ; then
