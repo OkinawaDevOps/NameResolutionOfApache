@@ -6,12 +6,11 @@
 --enable-ctype --with-curl --enable-dom --enable-filter \
 --enable-ftp --with-gd --enable-hash --with-iconv --enable-json \
 --enable-mbstring --with-openssl --with-pcre-dir --enable-pdo \
---with-pdo-pgsql=/usr/local/pgsql-client --with-pgsql=/usr/local/pgsql-client \
 --enable-posix --enable-session --enable-simplexml --enable-sockets \
 --with-sqlite --enable-tokenizer --enable-xml --enable-xmlreader --enable-xmlwriter \
 --with-jpeg-dir=/usr \
---with-gmp
+--with-gmp \
 --enable-exif --with-mcrypt\
 --with-apxs2=/usr/local/apache2/bin/apxs --with-libdir=lib64\
---enable-zip --with-zlib \
+--enable-zip --with-zlib
 ```
