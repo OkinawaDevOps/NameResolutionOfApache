@@ -99,4 +99,6 @@ defined(APR_DECLARE_EXPORT) の場合
 
     #define APR_DECLARE(type)            __declspec(dllimport) type __stdcall
 
-これ、windouz 向けな記述のマクロなのかどうか。
+これ、windouz 向けな記述のマクロなのかどうか。基本的に GNU/Linux の中で使っているのであれば通常の手続き定義と同義と考えて良いはず。
+
+
