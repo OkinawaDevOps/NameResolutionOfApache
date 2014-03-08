@@ -10,6 +10,7 @@
 ## インストール手順
 
 ### 事前作業
+```
 cd /usr/local/src
 
 wget http://ftp.kddilabs.jp/infosystems/apache//httpd/httpd-2.4.7.tar.gz
@@ -27,7 +28,7 @@ cd ../
 
 yum install openssl-devel
 yum -y install pcre-devel
-
+```
 
 ### Apacheインストール
 
