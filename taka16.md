@@ -4,6 +4,8 @@
 - 13:00 ~
 - CentOS 6.3にApache 2.4.7をsourceからインストールし、手順を作成。
 - yamaneさんに手順書共有し、Apache関連のタスク完了。
+- 手順書は下記に記述
+    - https://github.com/OkinawaDevOps/NameResolutionOfApache/blob/master/Apache_install.md
 
 
 ## ソースコード読みの準備など
